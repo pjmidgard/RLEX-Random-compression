@@ -365,7 +365,7 @@ class compression:
                                     if i==1:
                                                  sda3=sda2
                                     
-                                                 while ei5<lenf5*8:
+                                                 while ei5<lenf5*8+16:
                                                         e4b=sda3[ei4+14:ei5]
                                                         e4=sda3[ei4:ei5]
                                                         e4a=sda3[ei4:ei5-1]
