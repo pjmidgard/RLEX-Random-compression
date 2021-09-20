@@ -171,27 +171,6 @@ class compression:
 
                        # Read the whole file at once
                         data = binary_file.read()
-
-                        
-                
-
-                        
-                        if i==1:
-                            if Portal==9 and data[0:3]!=b'\xff\xd8\xff':
-                                    print("Program close because this is file incorrect")
-                                    raise SystemExit
-                            if Portal==9 and data[0:3]==b'\xff\xd8\xff': 
-                                    data=data[3:]
-                            if Portal==7 and data[0:4]!=b'\x89\x50\x4e\x47' :
-                                    print("Program close because this is file incorrect")
-                                    raise SystemExit
-                            if Portal==7 and data[0:4]==b'\x89\x50\x4e\x47' :             
-                                    data=data[4:]
-                            if Portal==8 and data[0:11]!=b'\x00\x00\x00\x18\x66\x74\x79\x70\x6d\x70\x34':
-                                    print("Program close because this is file incorrect")
-                                    raise SystemExit
-                            if Portal==8 and data[0:11]==b'\x00\x00\x00\x18\x66\x74\x79\x70\x6d\x70\x34':             
-                                    data=data[11:]
       
                         s=str(data)
                        
@@ -312,16 +291,20 @@ class compression:
                                     while sda2[ei4+14:ei5]=="1" or sda2[ei4+14:ei5]=="0":
                                                         
                                                         e4=sda2[ei4:ei5]
+                                                        yu=len(e4)
                                                         
                                                        
-                                                        if e4=="000000000000001":
+                                                        if e4=="000000000000001" or yu!=16:
                                                             ei4=ei4+16
                                                             ei5=ei5+16
                                                             
                                                             e4=sda2[ei4:ei5]
                                                             sda4=sda4+e4
 
-                                                        
+                                                            yu=len(e4)
+                                                     
+                                                         
+                                                           
 
                                                         else:
                                                             sda4=sda4+e4+"0"
@@ -460,13 +443,7 @@ class compression:
                                                     if assxq==1:
                                                        assx=10 
                                                     if assx==10:        
-                                                        if i==2:
-                                                            if Portal==7:
-                                                                jl= b'\x89\x50\x4e\x47'+jl
-                                                            if Portal==8:
-                                                                jl=b'\x00\x00\x00\x18\x66\x74\x79\x70\x6d\x70\x34'+jl
-                                                            if Portal==9:
-                                                                jl=b'\xff\xd8\xff'+jl
+                                              
                                                         f2.write(jl)
                                                         x2 = time()
                                                         x3=x2-x
