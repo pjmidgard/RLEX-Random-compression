@@ -344,7 +344,7 @@ class compression:
                                                  sda3=sda2
                                     
                                                  while ei5<lenf5*8+16:
-                                                        e4b=sda3[ei4:ei5-15]
+                                                        e4b=sda3[ei4:ei4+1]
                                                         e4=sda3[ei4:ei5]
                                                         e4a=sda3[ei4+1:ei5]
                                                         yu=len(e4)
@@ -352,9 +352,10 @@ class compression:
                                                          
                                                         
        
-                                                        
+                                                       
                                                         if e4b=="0":
                                                             sda4=sda4+e4a
+                                                        
 
                                                         else:
                                                             print(e4b)
