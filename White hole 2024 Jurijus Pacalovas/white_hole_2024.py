@@ -249,68 +249,76 @@ class compression:
 
                                 block2=0
                                 if i==2:
-                                        
+
+                                    if sda2[0:1]=="1":
+                                        g=1
+
+                                    if sda2[0:1]=="0":
+                                        g=2
                                     sda2=sda2[1:]
                                     lenf5=len(sda3)
 
-                                    if sda2[lenf5-8:lenf5]=="10000000":
 
-                                        sda2=sda2[:lenf5-8]
+                                    if g==1:
 
-                                    elif sda2[lenf5-7:lenf5]=="1000000":
+                                        if sda2[lenf5-8:lenf5]=="10000000":
 
-                                        sda2=sda2[:lenf5-7]
+                                            sda2=sda2[:lenf5-8]
 
-                                    elif sda2[lenf5-6:lenf5]=="100000":
+                                        elif sda2[lenf5-7:lenf5]=="1000000":
 
-                                        sda2=sda2[:lenf5-6]
+                                            sda2=sda2[:lenf5-7]
 
-                                    elif sda2[lenf5-5:lenf5]=="10000":
+                                        elif sda2[lenf5-6:lenf5]=="100000":
 
-                                        sda2=sda2[:lenf5-5]
+                                            sda2=sda2[:lenf5-6]
+
+                                        elif sda2[lenf5-5:lenf5]=="10000":
+
+                                            sda2=sda2[:lenf5-5]
 
 
-                                    elif sda2[lenf5-3:lenf5]=="100":
+                                        elif sda2[lenf5-3:lenf5]=="100":
 
-                                        sda2=sda2[:lenf5-3]
+                                            sda2=sda2[:lenf5-3]
 
-                                    elif sda2[lenf5-2:lenf5]=="10":
+                                        elif sda2[lenf5-2:lenf5]=="10":
 
-                                        sda2=sda2[:lenf5-2]
+                                            sda2=sda2[:lenf5-2]
 
-                                    elif sda2[lenf5-1:lenf5]=="1":
+                                        elif sda2[lenf5-1:lenf5]=="1":
 
-                                        sda2=sda2[:lenf5-1]
+                                            sda2=sda2[:lenf5-1]
 
-                                    
-                                    lenf5=len(sda2)
-                                    
-                                    block2=0
-                                    ei4=0
-                                    ei5=15
-                                    while sda2[ei4+14:ei5]=="1" or sda2[ei4+14:ei5]=="0":
-                                                        
-                                                        e4=sda2[ei4:ei5]
-                                                        yu=len(e4)
-                                                        
-                                                       
-                                                        if e4=="000000000000001":
-                                                            ei4=ei4+16
-                                                            ei5=ei5+16
+                                        
+                                        lenf5=len(sda2)
+                                        
+                                        block2=0
+                                        ei4=0
+                                        ei5=15
+                                        while sda2[ei4+14:ei5]=="1" or sda2[ei4+14:ei5]=="0":
                                                             
                                                             e4=sda2[ei4:ei5]
-                                                            sda4=sda4+e4
-
                                                             yu=len(e4)
-                                                     
-                                                         
+                                                            
                                                            
+                                                            if e4=="000000000000001":
+                                                                ei4=ei4+16
+                                                                ei5=ei5+16
+                                                                
+                                                                e4=sda2[ei4:ei5]
+                                                                sda4=sda4+e4
 
-                                                        else:
-                                                            sda4=sda4+e4+"0"
-                                   
-                                                        ei4=ei4+15
-                                                        ei5=ei5+15
+                                                                yu=len(e4)
+                                                         
+                                                             
+                                                               
+
+                                                            else:
+                                                                sda4=sda4+e4+"0"
+                                       
+                                                            ei4=ei4+15
+                                                            ei5=ei5+15
 
                                                         
              
@@ -389,6 +397,45 @@ class compression:
                                                         
 
                                                   
+                                    block2=0
+                                if i==1:
+                                        
+                                    
+                                    lenf5=len(sda4)
+                                    
+                                    block2=0
+                                    ei4=0
+                                    ei5=15
+                                    while sda4[ei4+14:ei5]=="1" or sda4[ei4+14:ei5]=="0":
+                                                        
+                                                        e4=sda4[ei4:ei5]
+                                                        yu=len(e4)
+                                                        
+                                                       
+                                                        if e4=="000000000000001":
+                                                            ei4=ei4+16
+                                                            ei5=ei5+16
+                                                            
+                                                            e4=sda4[ei4:ei5]
+                                                            sda5=sda5+e4
+
+                                                            yu=len(e4)
+                                                     
+                                                         
+                                                           
+
+                                                        else:
+                                                            sda5=sda5+e4+"0"
+                                   
+                                                        ei4=ei4+15
+                                                        ei5=ei5+15
+
+                                    if sda4==sda5:
+                                        sda4="1"+sda4
+
+
+                                    if sda4!=sda5:
+                                        sda4="0"+sda2
 
                                     
                                     e4=""
@@ -415,7 +462,7 @@ class compression:
                                                         sda4=""
                                                         szx=""
 
-                                                        wer="1"+wer+"1"
+                                                        wer=wer+"1"
                                                         lenf=len(wer)
                                                         print(lenf)
                                                         xc=8-lenf%8
