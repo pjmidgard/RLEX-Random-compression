@@ -298,25 +298,7 @@ class compression:
                                         ei5=15
                                         while sda2[ei4+14:ei5]=="1" or sda2[ei4+14:ei5]=="0":
                                                             
-                                                            e4=sda2[ei4:ei5]
-                                                            yu=len(e4)
-                                                            
-                                                           
-                                                            if e4=="000000000000001":
-                                                                ei4=ei4+16
-                                                                ei5=ei5+16
-                                                                
-                                                                e4=sda2[ei4:ei5]
-                                                                sda4=sda4+e4
-
-                                                                yu=len(e4)
-                                                         
-                                                             
-                                                               
-
-                                                            else:
-                                                                sda4=sda4+e4+"0"
-                                       
+                                                            sda4=sda4+"0"+sda2[ei4:ei5]
                                                             ei4=ei4+15
                                                             ei5=ei5+15
 
@@ -362,32 +344,24 @@ class compression:
                                                  sda3=sda2
                                     
                                                  while ei5<lenf5*8+16:
-                                                        e4b=sda3[ei4+14:ei5]
+                                                        e4b=sda3[ei4:ei5-15]
                                                         e4=sda3[ei4:ei5]
-                                                        e4a=sda3[ei4:ei5-1]
+                                                        e4a=sda3[ei4+1:ei5]
                                                         yu=len(e4)
                                                      
                                                          
-                                                        if yu!=16:
-                                                            sda4=sda4+"000000000000001"+e4
+                                                        
        
-
-                                                        elif e4b=="00" or e4a!="000000000000001":
+                                                        
+                                                        if e4b=="0":
                                                             sda4=sda4+e4a
 
-                                                        elif e4b=="10" or e4a!="000000000000001":
-                                                            sda4=sda4+e4
-
-                                                        elif e4b=="01" or e4a!="000000000000001":
-                                                            sda4=sda4+"000000000000001"+e4
-                                                        elif e4b=="11" or e4a!="000000000000001":
-                                                            sda4=sda4+"000000000000001"+e4
-                                                        elif e4a=="000000000000001":
-                                                            sda4=sda4+"000000000000001"+e4
-                                                                                               
-         
                                                         else:
-                                                            sda4=sda4+"000000000000001"+e4
+                                                            print(e4b)
+                                                            print("file not able to compress")
+                                                            raise SystemExit
+
+                                                     
 
                                                         
                                                         
@@ -398,44 +372,7 @@ class compression:
 
                                                   
                                     block2=0
-                                if i==1:
-                                        
-                                    
-                                    lenf5=len(sda4)
-                                    
-                                    block2=0
-                                    ei4=0
-                                    ei5=15
-                                    while sda4[ei4+14:ei5]=="1" or sda4[ei4+14:ei5]=="0":
-                                                        
-                                                        e4=sda4[ei4:ei5]
-                                                        yu=len(e4)
-                                                        
-                                                       
-                                                        if e4=="000000000000001":
-                                                            ei4=ei4+16
-                                                            ei5=ei5+16
-                                                            
-                                                            e4=sda4[ei4:ei5]
-                                                            sda5=sda5+e4
-
-                                                            yu=len(e4)
-                                                     
-                                                         
-                                                           
-
-                                                        else:
-                                                            sda5=sda5+e4+"0"
-                                   
-                                                        ei4=ei4+15
-                                                        ei5=ei5+15
-
-                                    if sda4==sda5:
-                                        sda4="1"+sda4
-
-
-                                    if sda4!=sda5:
-                                        sda4="0"+sda2
+                                
 
                                     
                                     e4=""
@@ -462,7 +399,7 @@ class compression:
                                                         sda4=""
                                                         szx=""
 
-                                                        wer=wer+"1"
+                                                        wer="1"+wer+"1"
                                                         lenf=len(wer)
                                                         print(lenf)
                                                         xc=8-lenf%8
