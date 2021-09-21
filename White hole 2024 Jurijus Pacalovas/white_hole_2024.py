@@ -70,7 +70,7 @@ class compression:
                 
     def cryptograpy_compression(self):
                 
-                self.name = "Written: Jurijus pacalovas Price Protal 5 000 000 Euro cost Date: 16/09/2021 14:23 Deep 14.5 ERA"
+                self.name = "Written: Jurijus pacalovas Date: 16/09/2021 14:23"
                 
                 if namez=="c" or namez=="e":
                     if namez=="c":
@@ -295,8 +295,8 @@ class compression:
                                                         
                                                        
                                                         if e4=="000000000000001" or yu!=16:
-                                                            ei4=ei4+16
-                                                            ei5=ei5+16
+                                                            ei4=ei4+yu
+                                                            ei5=ei5+yu
                                                             
                                                             e4=sda2[ei4:ei5]
                                                             sda4=sda4+e4
