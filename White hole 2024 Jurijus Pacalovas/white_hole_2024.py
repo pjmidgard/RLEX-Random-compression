@@ -299,8 +299,8 @@ class compression:
                                         while sda2[ei4+14:ei5]=="1" or sda2[ei4+14:ei5]=="0":
                                                             
                                                             sda4=sda4+"0"+sda2[ei4:ei5]
-                                                            ei4=ei4+15
-                                                            ei5=ei5+15
+                                                            ei4=ei4+8191
+                                                            ei5=ei5+8191
 
                                                         
              
@@ -343,7 +343,7 @@ class compression:
                                     if i==1:
                                                  sda3=sda2
                                     
-                                                 while ei5<lenf5*8+16:
+                                                 while ei5<lenf5*8+8192:
                                                         e4b=sda3[ei4:ei4+1]
                                                         e4=sda3[ei4:ei5]
                                                         e4a=sda3[ei4+1:ei5]
@@ -355,10 +355,11 @@ class compression:
                                                        
                                                         if e4b=="0":
                                                             sda4=sda4+e4a
+                                                            
                                                         
 
-                                                        else:
-                                                            print(e4b)
+                                                        if e4b=="1":
+                                                            
                                                             print("file not able to compress")
                                                             raise SystemExit
 
@@ -366,8 +367,8 @@ class compression:
 
                                                         
                                                         
-                                                        ei4=ei4+16
-                                                        ei5=ei5+16
+                                                        ei4=ei4+8192
+                                                        ei5=ei5+8192
                                                         block2=block2+1
                                                         
 
