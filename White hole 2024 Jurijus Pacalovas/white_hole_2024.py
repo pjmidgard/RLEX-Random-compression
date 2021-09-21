@@ -294,9 +294,9 @@ class compression:
                                                         yu=len(e4)
                                                         
                                                        
-                                                        if e4=="000000000000001" or yu!=16:
-                                                            ei4=ei4+yu
-                                                            ei5=ei5+yu
+                                                        if e4=="000000000000001":
+                                                            ei4=ei4+16
+                                                            ei5=ei5+16
                                                             
                                                             e4=sda2[ei4:ei5]
                                                             sda4=sda4+e4
@@ -361,23 +361,23 @@ class compression:
                                                      
                                                          
                                                         if yu!=16:
-                                                            sda4=sda4+"0000000000000010"+e4+ei8
+                                                            sda4=sda4+"000000000000001"+e4
 
-                                                        elif e4b=="00" or e4a!="000000000000001":
-                                                            sda4=sda4+e4a+ei8
+                                                        elif e4b=="00" and e4a!="000000000000001":
+                                                            sda4=sda4+e4a
 
-                                                        elif e4b=="10" or e4a!="000000000000001":
-                                                            sda4=sda4+e4+ei8
+                                                        elif e4b=="10" and e4a!="000000000000001":
+                                                            sda4=sda4+e4
 
-                                                        elif e4b=="01" or e4a!="000000000000001":
-                                                            sda4=sda4+"0000000000000010"+e4+ei8
-                                                        elif e4b=="11" or e4a!="000000000000001":
-                                                            sda4=sda4+"0000000000000010"+e4+ei8
+                                                        elif e4b=="01" or e4a=="000000000000001":
+                                                            sda4=sda4+"000000000000001"+e4
+                                                        elif e4b=="11" or e4a=="000000000000001":
+                                                            sda4=sda4+"000000000000001"+e4
 
                                                         elif e4a=="000000000000001":
-                                                            sda4=sda4+e4a+e4+ei8
+                                                            sda4=sda4+e4a+e4
                                                         else:
-                                                            sda4=sda4+"000000000000001"+e4+ei8
+                                                            sda4=sda4+"000000000000001"+e4
 
                                                         
                                                         
